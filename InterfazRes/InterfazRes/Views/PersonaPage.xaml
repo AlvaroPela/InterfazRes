@@ -14,44 +14,12 @@
                             TextColor="White"/>
                 </Frame>
 
-                <Label Text="{Binding Id}" />
+                <Entry x:Name="txtNombre" Placeholder="Ingrese el nombre"/>
+                <Entry x:Name="txtApellido" Placeholder="Ingrese el apellido"/>
+                <Entry x:Name="txtEdad" Placeholder="Ingrese la edad"/>
+                <Entry x:Name="txtEmail" Placeholder="Ingrese el Email"/>
 
-                <StackLayout >
-                    <Label Text="Nombre"/>
-                    <Entry Text="{Binding Nombre}"/>
-                </StackLayout>
-
-                <Label Text="Apellido"/>
-                <Entry Text="{Binding Apellido}"/>
-                <Label Text="Edad"/>
-                <Entry Text="{Binding Edad}" Keyboard="Numeric"/>
-                <Label Text="{Binding NombreCompleto}"/>
-
-                <Button Text="Guardar" Command="{Binding GuardarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"/>
-                <Button Text="Modificar" Command="{Binding ModificarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"/>
-                <Button Text="Eliminar" Command="{Binding EliminarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"
-                       VerticalOptions="Center"/>
-                <Button Text="Limpiar" Command="{Binding LimpiarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                       Margin="20,20,20,0"/>
-
-                <ListView x:Name="LvPersonas" ItemsSource="{Binding personas}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Edad}" Detail="{Binding NombreCompleto}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <Button x:Name="btnRegistar" Text="Registar" Clicked="btnRegistar_Clicked"/>
 
             </StackLayout>
         </ScrollView>
