@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InterfazRes.Views.Principal"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material">
+
+    <StackLayout BackgroundColor="Aqua">
+        <Frame BackgroundColor="Aqua" HasShadow="False">
+            <Label Text="PCMAYORISTA"
+               FontSize="40"
+               FontAttributes="Bold"
+               Margin="0,40,0,0"
+               HorizontalOptions="Center"
+               TextColor="Black"/>
+        </Frame>
+
+        <Frame VerticalOptions="FillAndExpand"
+               Margin="20"
+               CornerRadius="20"
+               HasShadow="False">
+            <StackLayout>
+                <Image Source="almacenar.png"
+                       Margin="17"/>
+
+                <Button Text="Entrar" 
+                        CornerRadius="20"
+                        BackgroundColor="Coral"
+                        x:Name="bntEntrar"
+                        Clicked="bntEntrar_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

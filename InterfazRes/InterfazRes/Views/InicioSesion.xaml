@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InterfazRes.Views.InicioSesion"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="#036F5A">
+
+
+        <Image Source="usuario.png" 
+               Margin="0,80,0,20"
+               HeightRequest="100"/>
+
+        <Frame BackgroundColor="#036F5A" HasShadow="False">
+            <Label Text="Bienvenido"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,0"
+                   HorizontalOptions="Center"
+                   TextColor="Black"
+                   x:Name="txtUsuario"/>
+        </Frame>
+        <StackLayout>
+            <Frame BackgroundColor="White" HasShadow="False" CornerRadius="12" Margin="12">
+                <Entry Placeholder="Usuario"
+               FontSize="Large"/>
+            </Frame>
+            <Frame BackgroundColor="White" HasShadow="False" CornerRadius="12" Margin="12">
+
+                <Entry Placeholder="Contraseña"
+                       FontSize="Large"
+                       IsPassword="True"
+                       x:Name="txtContraseña"/>
+            </Frame>
+            <Button Text="Entrar"
+                    x:Name="btnEntrarUsuario"
+                    Clicked="btnEntrarUsuario_Clicked"
+                    CornerRadius="20"
+                    BackgroundColor="Coral"
+                    Margin="20,20,20,0"
+                    VerticalOptions="Center"/>
+            <Button Text="Registar Usuario"
+                    x:Name="btnRegistarUsuario"
+                    Clicked="btnRegistarUsuario_Clicked"
+                    CornerRadius="20"
+                    BackgroundColor="Coral"
+                    Margin="20,20,20,0"
+                    VerticalOptions="Center" />
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
