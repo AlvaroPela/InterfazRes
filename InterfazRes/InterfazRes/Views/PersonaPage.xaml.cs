@@ -36,7 +36,11 @@ namespace InterfazRes.Views
                 txtEdad.Text = "";
                 txtEmail.Text = "";
                 await DisplayAlert("Registro "," Se registro de manera exitosa");
-
+                var personaList= await App.SQLiteDB.GetPersonasAsync();
+                if (personaList!=null)
+                {
+                    lstPersonas.ItemsSource = personaList;
+                }
             }
             else
             {

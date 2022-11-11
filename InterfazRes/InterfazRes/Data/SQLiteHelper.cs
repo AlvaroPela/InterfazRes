@@ -27,5 +27,14 @@ namespace InterfazRes.Data
                 return null;
             }
         }
+        public Task <List<Persona>> GetPersonasAsync()
+        {
+            return db.Table<Persona>().ToListAsync();
+        }
+
+        public Task<Persona> GetPersonaAsync (int idPersona)
+        {
+            return db.Table<Persona>().Where(a => a.IdPersona == idPersona).FirstOrDefaultAsync();
+        }
     }
 }
