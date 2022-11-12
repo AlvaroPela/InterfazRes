@@ -5,9 +5,9 @@
              NavigationPage.HasNavigationBar="False"
              Visual="Material">
 
-    <StackLayout BackgroundColor="Aqua">
-        <Frame BackgroundColor="Aqua" HasShadow="False">
-            <Label Text="PCMAYORISTA"
+    <StackLayout BackgroundColor="#85BEF3">
+        <Frame BackgroundColor="#85BEF3" HasShadow="False">
+            <Label Text="COMPUTO"
                FontSize="40"
                FontAttributes="Bold"
                Margin="0,40,0,0"
@@ -17,17 +17,19 @@
 
         <Frame VerticalOptions="FillAndExpand"
                Margin="20"
-               CornerRadius="20"
-               HasShadow="False">
+               CornerRadius="55"
+               HasShadow="False"
+               >
             <StackLayout>
                 <Image Source="almacenar.png"
-                       Margin="17"/>
+                       Margin="35"/>
 
                 <Button Text="Entrar" 
                         CornerRadius="20"
                         BackgroundColor="Coral"
                         x:Name="bntEntrar"
-                        Clicked="bntEntrar_Clicked"/>
+                        Clicked="bntEntrar_Clicked"
+                        />
             </StackLayout>
         </Frame>
     </StackLayout>

@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InterfazRes.Views.InicioSesion"
              NavigationPage.HasNavigationBar="False">
-    <StackLayout BackgroundColor="#036F5A">
+
+
+    <StackLayout BackgroundColor="#85BEF3">
 
 
         <Image Source="usuario.png" 
                Margin="0,80,0,20"
                HeightRequest="100"/>
 
-        <Frame BackgroundColor="#036F5A" HasShadow="False">
+        <Frame BackgroundColor="#85BEF3" HasShadow="False">
             <Label Text="Bienvenido"
                    FontSize="30"
                    FontAttributes="Bold"
