@@ -1,4 +1,5 @@
-﻿using InterfazRes.Views;
+﻿using InterfazRes.Servicio;
+using InterfazRes.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,6 +8,18 @@ namespace InterfazRes
 {
     public partial class App : Application
     {
+        private static PersonaServicio personaservicio;
+        public static PersonaServicio Personaservicio
+        {
+            get
+            {
+                if (personaservicio == null)
+                {
+                    personaservicio = new PersonaServicio();
+                }
+                return personaservicio;
+            }
+        }
         public App()
         {
             InitializeComponent();

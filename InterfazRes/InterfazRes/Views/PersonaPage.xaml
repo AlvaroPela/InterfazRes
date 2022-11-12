@@ -1,60 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="InterfazRes.Views.PersonaPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="#036F5A">
-                <Frame HasShadow="False" BackgroundColor="#036F5A">
-                    <Label Text="Registrar Usuario"
-                            FontSize="30"
-                            FontAttributes="Bold"
-                            Margin="0,20,0,0"
-                            HorizontalOptions="Center"
-                            TextColor="White"/>
-                </Frame>
-
-                <Label Text="{Binding Id}" />
-
-                <StackLayout >
-                    <Label Text="Nombre"/>
-                    <Entry Text="{Binding Nombre}"/>
+        <StackLayout BackgroundColor="#036F5A">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".2*"/>
+                    <RowDefinition Height=".8*"/>
+                </Grid.RowDefinitions>
+                <StackLayout>
+                    <Entry Placeholder="Nombre" Text="Jhon"/>
+                    <Entry Placeholder="Apellido" Text="Hernandez"/>
+                    <Entry Placeholder="Edad" Text="36"/>
+                    <Button Text="Guardar" Command="{Binding GuardarCommand}"/>
                 </StackLayout>
+                <CollectionView Grid.Row="1" ItemsSource="{Binding personas}"/>
+            </Grid>
 
-                <Label Text="Apellido"/>
-                <Entry Text="{Binding Apellido}"/>
-                <Label Text="Edad"/>
-                <Entry Text="{Binding Edad}" Keyboard="Numeric"/>
-                <Label Text="{Binding NombreCompleto}"/>
-
-                <Button Text="Guardar" Command="{Binding GuardarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"/>
-                <Button Text="Modificar" Command="{Binding ModificarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"/>
-                <Button Text="Eliminar" Command="{Binding EliminarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                        Margin="20,20,20,0"
-                       VerticalOptions="Center"/>
-                <Button Text="Limpiar" Command="{Binding LimpiarCommand}"
-                        CornerRadius="20"
-                        BackgroundColor="Coral"
-                       Margin="20,20,20,0"/>
-
-                <ListView x:Name="LvPersonas" ItemsSource="{Binding personas}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Edad}" Detail="{Binding NombreCompleto}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
-            </StackLayout>
-        </ScrollView>
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

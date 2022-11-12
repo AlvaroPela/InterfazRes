@@ -5,81 +5,48 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace InterfazRes.viewModel
 {
     internal class PersonaViewModel : PersonaModel
     {
-        public ObservableCollection<PersonaModel> Persona { get; set; }
-        PersonaServicio servicio = new PersonaServicio();
-        PersonaModel model;
+        public List<PersonaModel> personas { get; set; }
+        public ICommand GuardarCommand { get; set; }
+        public ICommand ModificarCommand { get; set; }
+
+        public PersonaModel nuevaPersona { get; set; }
+
         public PersonaViewModel()
         {
-            Persona = servicio.Consultar();
-            GuardarCommand = new Command(async () => await Guardar(), () => !IsBusy);
-            ModificarCommand = new Command(async () => await Modificar(), () => !IsBusy);
-            EliminarCommand = new Command(async () => await Eliminar(), () => !IsBusy);
-            LimpiarCommand = new Command(Limpiar, () => !IsBusy);
-        }
-
-        public Command GuardarCommand { get; set; }
-        public Command ModificarCommand { get; set; }
-        public Command EliminarCommand { get; set; }
-        public Command LimpiarCommand { get; set; }
-
-        private async Task Guardar()
-        {
-            IsBusy = true;
-            Guid IdPersona = Guid.NewGuid();
-            model = new PersonaModel()
+            Refresh();
+            GenerarNuevaPersona();//en el error le doy generar metodo
+            GuardarCommand = new Command(async () =>
             {
-                Nombre = Nombre,
-                Apellido = Apellido,
-                Edad = Edad,
-                Id = IdPersona.ToString()
-            };
-            servicio.Guardar(model);
-            await Task.Delay(2000);
-            IsBusy = false;
-        }
+                App.Personaservicio.Guardar(nuevaPersona);
+                Console.WriteLine(App.Personaservicio.MensajeDeEstado);
+                GenerarNuevaPersona();
+                Refresh();
+            });
 
-        private async Task Modificar()
-        {
-            IsBusy = true;
-            model = new PersonaModel()
+            ModificarCommand = new Command(async () =>
             {
-                Nombre = Nombre,
-                Apellido = Apellido,
-                Edad = Edad,
-                Id = Id
-            };
-            servicio.Modificar(model);
-            await Task.Delay(2000);
-            IsBusy = false;
+                App.Personaservicio.Modificar(nuevaPersona);
+                Console.WriteLine(App.Personaservicio.MensajeDeEstado);
+                GenerarNuevaPersona();
+                Refresh();
+            });
         }
 
-        private async Task Eliminar()
+        private void Refresh()
         {
-            IsBusy = true;
-            model = new PersonaModel()
-            {
-                Nombre = Nombre,
-                Apellido = Apellido,
-                Edad = Edad,
-                Id = Id
-            };
-            servicio.Eliminar(Id);
-            await Task.Delay(2000);
-            IsBusy = false;
+            throw new NotImplementedException();
         }
 
-        private void Limpiar()
+        private void GenerarNuevaPersona()
         {
-            Nombre = "";
-            Apellido = "";
-            Edad = 0;
-            Id = "";
+            throw new NotImplementedException();
         }
     }
 }

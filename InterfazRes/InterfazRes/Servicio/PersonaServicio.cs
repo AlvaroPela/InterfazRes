@@ -1,4 +1,5 @@
-﻿using InterfazRes.Model;
+﻿using SQLite;
+using InterfazRes.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,41 +8,95 @@ using System.Text;
 
 namespace InterfazRes.Servicio
 {
-    internal class PersonaServicio
+    public class PersonaServicio
     {
-
-        public ObservableCollection<PersonaModel> personas { get; set; }
+        SQLiteConnection connection; //permite establecer una conexion con el archivo de base de datos
+        public string MensajeDeEstado { get; set; }
 
         public PersonaServicio()
         {
-            if (personas == null)
+            connection =
+                new SQLiteConnection(Constants.DatabasePath, Constants.flags); //ruta hacia archivo de la base de datos
+            connection.CreateTable<PersonaModel>();
+        }
+
+        public void Guardar(PersonaModel nuevaPersona)
+        {
+            int result = 0;
+            try
             {
-                personas = new ObservableCollection<PersonaModel>();
+                result = connection.Insert(nuevaPersona);
+                MensajeDeEstado = string.Format($"{result} registro(s) agregado(s)");
+            }
+            catch (Exception ex)
+            {
+
+                MensajeDeEstado = $"Error: {ex.Message}";
             }
         }
-        public ObservableCollection<PersonaModel> Consultar()
+
+        public List<PersonaModel> SeleccionarTodo()
         {
-            return personas;
-        }
-        public void Guardar(PersonaModel model)
-        {
-            personas.Add(model);
-        }
-        public void Modificar(PersonaModel model)
-        {
-            for (int i = 0; i < personas.Count; i++)
+            try
             {
-                if (personas[i].Id == model.Id)
+                return connection.Table<PersonaModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                MensajeDeEstado = $"Error: {ex.Message}";
+            }
+            return null;
+        }
+
+        public PersonaModel Get(string id)
+        {
+            try
+            {
+                return connection.Table<PersonaModel>().FirstOrDefault(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                MensajeDeEstado = $"Error: {ex.Message}";
+
+            }
+            return null;
+        }
+
+        public void Modificar(PersonaModel nuevaPersona)
+        {
+            int result = 0;
+            try
+            {
+                if (nuevaPersona.Id != "")
                 {
-                    personas[i] = model;
+                    result = connection.Update(nuevaPersona);
+                    MensajeDeEstado = string.Format($"{result} registro(s) actualizado(s)");
+                }
+                else
+                {
+                    result = connection.Insert(nuevaPersona);
+                    MensajeDeEstado = string.Format($"{result} registro(s) agregado(s)");
                 }
             }
+            catch (Exception ex)
+            {
+                MensajeDeEstado = $"Error: {ex.Message}";
+            }
         }
 
-        public void Eliminar(string idPersona)
+        public void Eliminar(string personaId)
         {
-            PersonaModel model = personas.FirstOrDefault(p => p.Id == idPersona);
-        }
+            try
+            {
+                var persona = Get(personaId);
+                connection.Delete(persona);
+            }
+            catch (Exception ex)
+            {
 
+                MensajeDeEstado = $"Error: {ex.Message}";
+            }
+        }
     }
 }
