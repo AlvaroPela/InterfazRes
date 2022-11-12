@@ -22,21 +22,27 @@ namespace InterfazRes.viewModel
         {
             Refresh();
             GenerarNuevaPersona();//en el error le doy generar metodo
+#pragma warning disable CS1998 // El método asincrónico carece de operadores "await" y se ejecutará de forma sincrónica
             GuardarCommand = new Command(async () =>
             {
                 App.Personaservicio.Guardar(nuevaPersona);
                 Console.WriteLine(App.Personaservicio.MensajeDeEstado);
                 GenerarNuevaPersona();
                 Refresh();
+          
             });
+#pragma warning restore CS1998 // El método asincrónico carece de operadores "await" y se ejecutará de forma sincrónica
 
+#pragma warning disable CS1998 // El método asincrónico carece de operadores "await" y se ejecutará de forma sincrónica
             ModificarCommand = new Command(async () =>
             {
                 App.Personaservicio.Modificar(nuevaPersona);
                 Console.WriteLine(App.Personaservicio.MensajeDeEstado);
                 GenerarNuevaPersona();
                 Refresh();
-            });
+                
+            }) ;
+#pragma warning restore CS1998 // El método asincrónico carece de operadores "await" y se ejecutará de forma sincrónica
         }
 
         private void Refresh()
