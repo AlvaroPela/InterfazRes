@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace InterfazRes.viewModel
+namespace InterfazRes.viewModel 
 {
    
 }

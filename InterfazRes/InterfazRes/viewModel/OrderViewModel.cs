@@ -7,7 +7,7 @@ using Xamarin.Forms;
 namespace InterfazRes.viewModel
 {
     public class OrderViewModel : BaseViewModel
-    {
+    { 
         public OrderViewModel()
         {
             MenuList = GetMenu();

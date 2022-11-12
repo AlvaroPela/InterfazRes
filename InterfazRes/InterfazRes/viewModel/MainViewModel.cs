@@ -21,7 +21,7 @@ namespace InterfazRes.viewModel
         private List<Pick> GetPicks()
         {
             return new List<Pick>
-            {
+            { 
                 new Pick
                 {
                     Title = "Desayuno", Image = "IMG01.png", Description = "Ordene un desayuno europeo"

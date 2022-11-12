@@ -21,6 +21,9 @@ namespace InterfazRes
         }
 
         public static SQLiteHelper SQLiteDB
+    { 
+        private static PersonaServicio personaservicio;
+        public static PersonaServicio Personaservicio
         {
             get
             {
